@@ -20,9 +20,11 @@
 	<a href="./getUserInitialInfo.do?user_account=${user_account}" target="_blank">사용자 로그인 후 정보 조회  </a> <br>
 	
 	
+	<a href="./createUserCharacter.do?user_account=${user_account}" target="_blank">캐릭터 생성</a> <br>
 	<a href="./selectCharacterList.do?user_account=${user_account}" target="_blank">캐릭터 조회</a> <br>
 	<a href="selectCharacterShapeInfo.do?user_account=${user_account}&char_id=1&char_sn=1" target="_blank">캐릭터 shape 조회</a> <br>
 	<a href="./modifyUserCharacter.do?user_account=${user_account}&char_id=&user_char_sn=&char_cust_info=" target="_blank">캐릭터 정보 수정 </a> <br>
+	<a href="./changeMainCharacter.do?user_account=${user_account}&char_id=&user_char_sn=" target="_blank">메인캐릭터변경 </a> <br>
 	<a href="./modifyCharacterShape.do?user_account=${user_account}&char_id=1&user_char_sn=1&char_shape_info=" target="_blank">캐릭터 Shape 정보 수정 </a> <br>
 	<a href="./saveUserMap.do?user_account=${user_account}&char_id=1&user_char_sn=1&map_type=1&map_data=" target="_blank">캐릭터 Map Data저장  </a> <br>
 	<a href="./selectUserMap.do?user_account=${user_account}&char_id=1&user_char_sn=1&map_type=1" target="_blank">캐릭터 Map Data 조회   </a> <br>

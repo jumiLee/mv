@@ -13,6 +13,7 @@ import common.util.UserLevelType;
 import com.vassystem.dao.MemberDAO;
 import com.vassystem.dao.UserInfoDAO;
 import com.vassystem.dto.Member;
+import com.vassystem.packet.MemberInfoPacket;
 import com.vassystem.packet.MemberInitialInfoPacket;
 import com.vassystem.packet.ResultPacket;
 
@@ -86,6 +87,34 @@ public class MemberServiceImpl implements MemberService {
 		return resultPacket;
 	}	
 	
+	/**
+	 * login check and return Member Info 
+	 * 로그인 성공하면, 계정에 해당하는 member정보를 리턴해줌.
+	 */
+	@Override
+	public MemberInfoPacket loginCheckWithRtn(String email, String pwd) throws Exception {
+		
+		ResultPacket resultPacket = new ResultPacket();
+		MemberInfoPacket memberInfoPacket = new MemberInfoPacket();
+		int user_account = 0;
+		
+		//call procedure
+		resultPacket = loginCheck(email, pwd);
+				
+		//login success 
+		if(resultPacket.resultCd ==0) {
+			user_account = resultPacket.account;
+			//register Attend
+			userAttendService.registerUserAttend(user_account);
+			
+			//해당 멤버 정보 조회
+			memberInfoPacket.userDetail = userInfoDAO.selectUserDetail(user_account);	
+		}
+		
+		memberInfoPacket.setHeader(user_account, resultPacket.resultCd, resultPacket.resultMsg);
+				
+		return memberInfoPacket;
+	}	
 	/* register */
 	@Override
 	public ResultPacket register(UserLevelType userLevel, 

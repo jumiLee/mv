@@ -21,4 +21,8 @@ public class CharacterDAO extends AbstractDAO {
 	public Object modifyUserCharacter(ParamVO paramVO) throws Exception{ 
 		return selectOne("character.modifyUserCharacter", paramVO); 
 	}
+	
+	public Object createUserCharacter(ParamVO paramVO) throws Exception{ 
+		return selectOne("character.createUserCharacter", paramVO); 
+	}
 }

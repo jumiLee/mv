@@ -11,6 +11,7 @@ import common.util.ChannelType;
 import common.util.UserLevelType;
 
 import com.vassystem.dto.Member;
+import com.vassystem.packet.MemberInfoPacket;
 import com.vassystem.packet.MemberInitialInfoPacket;
 import com.vassystem.packet.ResultPacket;
 import com.vassystem.service.MemberService;
@@ -44,6 +45,17 @@ public class MemberController {
 			) throws Exception {
 		
 		return memberService.loginCheck(email, pwd);
+	}
+	
+	/* login check with return Member Info */
+	@RequestMapping(value="/loginChkWithRtn.do", produces = "application/json")
+	@ResponseBody
+	public MemberInfoPacket loginChkWithRtn(
+			@RequestParam String email
+			,@RequestParam String pwd
+			) throws Exception {
+		
+		return memberService.loginCheckWithRtn(email, pwd);
 	}
 	
 	/* member register */

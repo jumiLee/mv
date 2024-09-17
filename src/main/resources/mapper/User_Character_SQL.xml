@@ -53,4 +53,17 @@
 		)
 	}
 	</select>
+	
+	<select id="createUserCharacter" statementType="CALLABLE" parameterType="common.util.ParamVO"> 
+	{ 
+		call abn_AddUserCharacter (
+			#{inParam01, 	jdbcType = INTEGER, mode = IN},	<!-- user_account -->
+			#{inParam02, 	jdbcType = INTEGER, mode = IN},	<!-- char_id -->
+			null,											<!-- mct_id -->
+			#{inStrParam01, jdbcType = VARCHAR, mode = IN},	<!-- carry_flag -->
+			#{outParam01,  	jdbcType = INTEGER, mode = OUT},<!-- result code -->
+	   		#{outParam02,	jdbcType = INTEGER, mode = OUT}	<!-- new user_char_sn -->
+		)
+	}
+	</select>
 </mapper>

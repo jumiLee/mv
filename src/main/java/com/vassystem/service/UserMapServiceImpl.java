@@ -26,7 +26,7 @@ public class UserMapServiceImpl implements UserMapService{
 		userMap.setCharacterCompIds(getCharacterCompIds(user_account, char_id, user_char_sn, map_type));
 		userMap.setMapData(map_data);
 		
-		userMapPacket.userMap = userMapRepository.save(userMap);
+		userMapRepository.save(userMap); //return data 보내지 않고 성공여부만 보냄.
 		userMapPacket.setHeader(user_account);
 		
 		return userMapPacket;
